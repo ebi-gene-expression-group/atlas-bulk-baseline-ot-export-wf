@@ -1,0 +1,6 @@
+---
+channels:
+  - conda-forge
+dependencies:
+  - pandas
+  - python =3.9

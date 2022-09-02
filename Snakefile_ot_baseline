@@ -1,0 +1,7 @@
+include: "Snakefile"
+
+# atom: set grammar=python:
+
+rule all:
+    input:
+        required_outputs="ot_baseline_uploads.done"
