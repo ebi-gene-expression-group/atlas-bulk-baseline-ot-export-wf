@@ -44,13 +44,13 @@ rule get_public_accessions_for_species:
 
         psql -c "COPY (
                     SELECT accession FROM experiment
-                    WHERE species = '{params.species}'
+                    WHERE species LIKE '{params.species}%'
                     AND not private
                     ORDER BY last_update DESC) TO STDOUT WITH NULL AS ''" \
              -v ON_ERROR_STOP=1 $dbConnection > {output.accessions}
         psql -c "COPY (
                     SELECT accession FROM experiment
-                    WHERE species = '{params.species}'
+                    WHERE species LIKE '{params.species}%'
                     AND not private
                     AND type = 'RNASEQ_MRNA_BASELINE'
                     ORDER BY last_update DESC) TO STDOUT WITH NULL AS ''" \
@@ -99,7 +99,7 @@ rule ot_baseline_export:
             if [ ! -f $DONE_FILE ]; then
                 echo "Running $ACCESSION"
                 mkdir -p {params.prefix}/$ACCESSION
-                python {workflow.basedir}/scripts/ot-export-atlas-baseline-exp.py \
+                python {workflow.basedir}/scripts/ot_export_atlas_baseline_exp.py \
                     -p $ATLAS_EXPS/$ACCESSION -o {params.prefix}/$ACCESSION -n $ATLAS_PROD/{params.n_extra_path}/$ACCESSION
                 touch $DONE_FILE
             else
