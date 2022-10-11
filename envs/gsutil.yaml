@@ -2,4 +2,4 @@
 channels:
   - conda-forge
 dependencies:
-  - google-cloud-sdk
+  - google-cloud-sdk=405.0.0
