@@ -321,7 +321,7 @@ def get_provider(idf_dict):
     'BLUEPRINT consortium; ArrayExpress'
     """
 
-    f"{idf_dict['person last name']}, {idf_dict['person first name']}"
+    # f"{idf_dict['person last name']}, {idf_dict['person first name']}"
     first_names = []
     if 'person first name' in idf_dict:
         first_names = idf_dict['person first name'].split("\t")
