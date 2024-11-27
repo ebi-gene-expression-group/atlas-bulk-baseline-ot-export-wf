@@ -30,8 +30,12 @@ Error in rule upload_ot_baseline_export:
     conda-env: <path-to>/snakemake_conda_envs/b73382db313a98c7af5f1a819aba6048
 ```
 
-it might happen then that gcloud complains that it is too old when trying to do `gcloud auth login`.
+1) If gcloud complains that it is too old when trying to do `gcloud auth login`.
 
 In that case, update `envs/gsutil.yaml` to the latest available version of google-cloud-sdk.
+
+2) If gcloud complains that credentials are invalid.
+
+In that case Please activate environment as mentioned above then run `gcloud auth login` it will show a URL and ask for token. Go to URL and it will show a token, paste it on terminal and authenticate. Then re-run export job again.
 
 Also, when trying to do gcloud auth login, it requires a user that has write access to that GCP bucket (for this, please liaise with OpenTargets so that your EBI Google at work account is added).
